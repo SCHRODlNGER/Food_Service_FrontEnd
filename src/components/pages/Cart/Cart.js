@@ -7,6 +7,7 @@ import { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import history from '../../../history'
 import Address from '../UserAccount/Address'
+import SignInModal from '../../modals/SignInModal'
 
 function Cart() {
 
@@ -45,7 +46,7 @@ function Cart() {
         return ()=>{
             dispatch(selectAddressCleanup())
         }
-    })
+    }, [])
 
     return (
         <Content style ={{width : "100vw", display: "block", alignContent: "center", height: "100vh" ,textAlign : "center"}}>
@@ -60,9 +61,9 @@ function Cart() {
                                 <Button onClick = {()=>RemoveCartItems(item.id, item.price)} >Remove</Button>
                             </RecipeItem>
                         })}
-                        <div style ={{display: 'block', alignSelf: "center", padding: "50px"}}>
+                        {isSignedIn?<div style ={{display: 'block', alignSelf: "center", padding: "50px"}}>
                             <Button type = "primary" onClick = {()=>OrderHandler()} > Order </Button>
-                        </div>
+                        </div>: <SignInModal visible = {true} />}
                     </div>
                 }
                 {

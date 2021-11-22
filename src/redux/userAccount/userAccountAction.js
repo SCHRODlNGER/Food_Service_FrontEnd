@@ -26,7 +26,6 @@ export const User_SignIn = (UserData) =>{
         try{
             if(response.data.jwt){
                 log.info("Authenticated")
-                history.replace("/")
                 dispatch({
                     type: HANDLE_SIGNIN,
                     payload: {
@@ -35,7 +34,7 @@ export const User_SignIn = (UserData) =>{
                 })
 
                 Cookies.set(HANDLE_TOKEN_ID, response.data.jwt, {expires: 7});
-                history.push("/")
+                history.goBack()
 
             }
             else
