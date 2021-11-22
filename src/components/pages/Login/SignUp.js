@@ -6,10 +6,11 @@ import history from '../../../history'
 import {connect} from 'react-redux'
 
 import { User_SignUp } from '../../../redux'
+import log from 'loglevel'
 
 const mapStatetoProps = (state) =>{
     return{
-        errorMsg: state.UserReducer.errorMsg
+        errorMsg: state.UserAuthReducer.msg
     }
 }
 
@@ -28,6 +29,8 @@ function SignUp(props) {
     const onSignInClickHandler = ()=>{
         history.push("/signin")
     }
+
+    log.info(`[SignUpScreen]: Rendering signup screen`)
 
     return (
         <Content style ={{width : "100vw", display: "block", alignContent: "center", height: "100vh" ,textAlign : "center"}}>
@@ -73,7 +76,7 @@ function SignUp(props) {
 
                     <Form.Item
                     label = "Email Id"
-                    name = "emailId"
+                    name = "email"
                     required= {true}>
                         <Input type = "email" />
                     </Form.Item>

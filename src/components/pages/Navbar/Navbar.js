@@ -9,7 +9,7 @@ import {User_Signout} from '../../../redux/userAccount/userAccountAction'
 
 const mapStatetoProps = (state)=>{
     return{
-        isSignedIn : state.UserReducer.isSignedIn
+        isSignedIn : state.UserAuthReducer.isSignedIn
     }
 }
 
@@ -26,7 +26,7 @@ function Navbar(props) {
     const onAccountHandler = ()=>{
 
         if(props.isSignedIn)
-            history.push("/account")
+            history.push("/user")
         else
             history.push("/signin")
 
@@ -40,6 +40,11 @@ function Navbar(props) {
         history.push("/")
     }
 
+    const UserAccountRouter = ()=>{
+        history.push("/user")
+    }
+
+    
     
 
     return (
@@ -51,10 +56,9 @@ function Navbar(props) {
                     <h2>Deepika Store</h2>
                 </Menu.Item>
 
-                <NavItem name = {"Link1"} key = {1} />
-                <NavItem name = {"Link2"} key = {2} />
-                <NavItem name = {"Link3"} key = {3} />
-                <NavItem name = {"Link4"} key = {4} />
+                <NavItem name = {"Home"} key = {1} route = "/" />
+                <NavItem name = {"All Recipes"} key = {2} route = "/recipes" />
+                <NavItem name = {"Orders"} key = {3} route = "/orders" />
 
                 
                 <Menu.Item key = "userAccount">

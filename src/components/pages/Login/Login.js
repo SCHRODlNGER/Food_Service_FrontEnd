@@ -9,7 +9,7 @@ import history from '../../../history'
 
 const mapStatetoProps = (state) =>{
     return{
-        errorMsg: state.UserReducer.errorMsg
+       errorMsg: state.UserAuthReducer.msg 
     }
 }
 

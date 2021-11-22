@@ -8,29 +8,31 @@ import _ from 'lodash'
 
 const INITIAL_STATE = {
     isSignedIn: false,
-    errorMsg: null
+    msg: null
 }
 
-const UserReducer = (state = INITIAL_STATE, action)=>{
+const UserAuthReducer = (state = INITIAL_STATE, action)=>{
     switch(action.type){
         case HANDLE_SIGNIN:
-            return {...state, isSignedIn : true, errorMsg: null , userid: action.payload.userid}
+            return {...state, isSignedIn : true, msg: null, firstName: action.payload.firstName }
         
         case HANDLE_SIGNUP:
-            return {...state, isSignedIn: true , errorMsg: null, userid: action.payload.userid }
+            return {...state, msg: null}
 
         case HANDE_SIGNOUT:
-            return _.omit({...state, isSignedIn: false, errorMsg: null}, 'userid')
+            return _.omit({...state, isSignedIn: false, msg: null}, 'userid')
         
         case HANDLE_SIGNIN_ERROR:
-            return {...state, errorMsg: action.payload}
+            return {...state, msg: action.payload}
 
         case HANDLE_SIGNUP_ERROR:
-            return {...state, errorMsg: action.payload}
+            return {...state, msg: action.payload}
+
+        
 
         default:
             return state
     }
 }
 
-export default UserReducer
+export default UserAuthReducer

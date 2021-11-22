@@ -3,11 +3,11 @@ import thunkMiddleware from 'redux-thunk'
 
 import rootReducer from './rootReducer'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSIONS_COMPOSE__ || compose;
+import {composeWithDevTools} from 'redux-devtools-extension'
 
 const store = createStore(
     rootReducer,
-    composeEnhancers(applyMiddleware(thunkMiddleware))
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
 );
 
 
