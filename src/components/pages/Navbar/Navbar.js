@@ -53,7 +53,7 @@ function Navbar(props) {
                     mode  = "horizontal">
 
                 <Menu.Item key = "name" onClick = {HomeRouting}>
-                    <h2>Deepika Store</h2>
+                    <h2>Restro Store</h2>
                 </Menu.Item>
 
                 <NavItem name = {"Home"} key = {1} route = "/" />
